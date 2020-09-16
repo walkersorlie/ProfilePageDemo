@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.profilepage.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_editNameFragment"
+            app:destination="@id/editNameFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editPhoneFragment"
+            app:destination="@id/editPhoneFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editImageFragment"
+            app:destination="@id/editImageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editEmailFragment"
+            app:destination="@id/editEmailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editDescriptionFragment"
+            app:destination="@id/editDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editNameFragment"
+        android:name="com.example.profilepage.EditNameFragment"
+        android:label="fragment_edit_name"
+        tools:layout="@layout/fragment_edit_name" >
+        <action
+            android:id="@+id/action_editNameFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPhoneFragment"
+        android:name="com.example.profilepage.EditPhoneFragment"
+        android:label="fragment_edit_phone"
+        tools:layout="@layout/fragment_edit_phone" >
+        <action
+            android:id="@+id/action_editPhoneFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editImageFragment"
+        android:name="com.example.profilepage.EditImageFragment"
+        android:label="fragment_edit_image"
+        tools:layout="@layout/fragment_edit_image" >
+        <action
+            android:id="@+id/action_editImageFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editEmailFragment"
+        android:name="com.example.profilepage.EditEmailFragment"
+        android:label="fragment_edit_email"
+        tools:layout="@layout/fragment_edit_email" >
+        <action
+            android:id="@+id/action_editEmailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editDescriptionFragment"
+        android:name="com.example.profilepage.EditDescriptionFragment"
+        android:label="fragment_edit_description"
+        tools:layout="@layout/fragment_edit_description" >
+        <action
+            android:id="@+id/action_editDescriptionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
