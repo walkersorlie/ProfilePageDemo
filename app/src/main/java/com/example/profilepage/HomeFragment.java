@@ -1,25 +1,28 @@
 package com.example.profilepage;
 
-import android.media.Image;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,12 +31,18 @@ import org.w3c.dom.Text;
  */
 public class HomeFragment extends Fragment {
 
+    public static final int GET_FROM_GALLERY = 99;
+
+    private static final String TAG = "Home Fragment";
+
     private FragmentViewModel viewModel;
     private ImageView imageView;
-    private TextView nameTextView;
-    private TextView phoneView;
-    private TextView emailView;
-    private TextView descriptionView;
+    private TextInputEditText editNameTextView;
+    private TextInputEditText editPhoneView;
+    private TextInputEditText editEmailView;
+    private TextInputEditText editDescriptionView;
+
+    private EditText editTextTextPersonName;
 
 
     public HomeFragment() {
@@ -51,11 +60,15 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        imageView = (ImageView) view.findViewById(R.id.imageView);
-        nameTextView = (TextView) view.findViewById(R.id.nameTextView);
-        phoneView = (TextView) view.findViewById(R.id.phoneView);
-        emailView = (TextView) view.findViewById(R.id.emailView);
-        descriptionView = (TextView) view.findViewById(R.id.descriptionView);
+        imageView = view.findViewById(R.id.imageView);
+        editNameTextView = view.findViewById(R.id.editNameTextView);
+        editPhoneView = view.findViewById(R.id.editPhoneView);
+        editEmailView = view.findViewById(R.id.editEmailView);
+        editDescriptionView = view.findViewById(R.id.editDescriptionView);
+
+//        editTextTextPersonName = view.findViewById(R.id.editTextTextPersonName);
+//        KeyListener mKeyListener = editTextTextPersonName.getKeyListener();
+//        editTextTextPersonName.setKeyListener(null);
 
 //        imageView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -64,45 +77,61 @@ public class HomeFragment extends Fragment {
 //            }
 //         }
 
-        nameTextView.setOnClickListener(new View.OnClickListener() {
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.setName(nameTextView.getText().toString());
+//                viewModel.setImage(imageView.getDrawable());
+//                navController.navigate(R.id.action_homeFragment_to_editImageFragment);
+                startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI), GET_FROM_GALLERY);
+            }
+        });
 
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        editNameTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.setName(editNameTextView.getText().toString());
+
                 navController.navigate(R.id.action_homeFragment_to_editNameFragment);
             }
         });
 
-        phoneView.setOnClickListener(new View.OnClickListener() {
+        editPhoneView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.setPhone(phoneView.getText().toString());
+                viewModel.setPhone(editPhoneView.getText().toString());
 
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                 navController.navigate(R.id.action_homeFragment_to_editPhoneFragment);
             }
         });
 
-       emailView.setOnClickListener(new View.OnClickListener() {
+       editEmailView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.setEmail(emailView.getText().toString());
+                viewModel.setEmail(editEmailView.getText().toString());
 
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                 navController.navigate(R.id.action_homeFragment_to_editEmailFragment);
             }
         });
 
-       descriptionView.setOnClickListener(new View.OnClickListener() {
+       editDescriptionView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               viewModel.setDescription(descriptionView.getText().toString());
+               viewModel.setDescription(editDescriptionView.getText().toString());
 
-               NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                navController.navigate(R.id.action_homeFragment_to_editDescriptionFragment);
            }
        });
+
+//        editTextTextPersonName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                viewModel.setName(nameTextView.getText().toString());
+//
+//                navController.navigate(R.id.action_homeFragment_to_editNameFragment);
+//            }
+//        });
 
 
 
@@ -115,38 +144,39 @@ public class HomeFragment extends Fragment {
 
         viewModel = new ViewModelProvider(requireActivity()).get(FragmentViewModel.class);
 
-//        viewModel.getImage().observe(getViewLifecycleOwner(), new Observer<Image>() {
+//        viewModel.getImage().observe(getViewLifecycleOwner(), new Observer<Drawable>() {
 //            @Override
-//            public void onChanged(Image image) {
-//
+//            public void onChanged(Drawable drawable) {
+//                imageView.setImageDrawable(drawable);
 //            }
 //        });
 
         viewModel.getName().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                nameTextView.setText(s);
+                editNameTextView.setText(s);
+//                editTextTextPersonName.setText(s);
             }
         });
 
         viewModel.getEmail().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                emailView.setText(s);
+                editEmailView.setText(s);
             }
         });
 
         viewModel.getPhone().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                phoneView.setText(s);
+                editPhoneView.setText(s);
             }
         });
 
         viewModel.getDescription().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                descriptionView.setText(s);
+                editDescriptionView.setText(s);
             }
         });
     }
@@ -175,4 +205,27 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 //    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            switch (requestCode) {
+
+                case GET_FROM_GALLERY:
+                    if (resultCode == Activity.RESULT_OK) {
+                        Uri image = data.getData();
+
+                        imageView.setImageURI(image);
+                        break;
+                    } else if (resultCode == Activity.RESULT_CANCELED) {
+                        Log.e(TAG, "Selecting picture cancelled");
+                    }
+                    break;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Exception in onActivityResult : " + e.getMessage());
+        }
+
+    }
 }
