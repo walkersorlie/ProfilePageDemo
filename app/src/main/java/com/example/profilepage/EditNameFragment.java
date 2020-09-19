@@ -48,6 +48,7 @@ public class EditNameFragment extends Fragment {
 
         Button button = view.findViewById(R.id.button);
         editName = view.findViewById(R.id.editTextName);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

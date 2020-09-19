@@ -57,4 +57,11 @@
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.TextInputLayout.Rounded</item>
     </style>
 
+    <style name="FragmentTextView" parent="">
+        <item name="android:layout_marginTop">125dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

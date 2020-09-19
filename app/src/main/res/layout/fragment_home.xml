@@ -127,22 +127,29 @@
             app:srcCompat="@drawable/ic_edit_black_18dp" />
 
         <LinearLayout
-            android:layout_width="324dp"
-            android:layout_height="451dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="346dp"
+            android:layout_height="480dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+            <TextView
+                android:id="@+id/nameDescriptionView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nameDescriptionView"
+                android:textSize="16sp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="20dp"
                 android:focusable="false"
-                android:hint="Name"
+                android:hint="@string/nameHint"
                 app:boxBackgroundColor="#5e5e76">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -153,13 +160,20 @@
                     android:focusable="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/phoneDescriptionView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phoneDescriptionView"
+                android:textSize="16sp"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="20dp"
                 android:focusable="false"
-                android:hint="Phone"
+                android:hint="@string/phoneHint"
                 app:boxBackgroundColor="#5e5e76"
                 app:hintAnimationEnabled="false">
 
@@ -171,13 +185,20 @@
                     android:focusable="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/emailDescriptioNView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/emailDescriptionView"
+                android:textSize="16sp"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="20dp"
                 android:focusable="false"
-                android:hint="Email"
+                android:hint="@string/emailHint"
                 app:boxBackgroundColor="#5e5e76"
                 app:hintAnimationEnabled="false">
 
@@ -189,12 +210,19 @@
                     android:focusable="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/descriptionDescriptionView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descriptionDescriptionView"
+                android:textSize="16sp"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/descriptionView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:focusable="false"
-                android:hint="Description"
+                android:hint="@string/descriptionHint"
                 app:boxBackgroundColor="#5e5e76"
                 app:hintAnimationEnabled="false">
 

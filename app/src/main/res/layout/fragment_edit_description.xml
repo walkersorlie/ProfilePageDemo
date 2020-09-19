@@ -13,52 +13,63 @@
 
         <TextView
             android:id="@+id/editDescriptionView"
+            style="@style/FragmentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
             android:text="Edit Bio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/descriptionView"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/descriptionView"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            android:layout_marginTop="75dp"-->
+        <!--            android:focusable="false"-->
+        <!--            android:hint="@string/descriptionHint"-->
+        <!--            app:boxBackgroundColor="#5e5e76"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.5"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/editDescriptionView">-->
+
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:id="@+id/editTextDescription"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:paddingTop="12dp"-->
+        <!--                android:background="@null"-->
+        <!--                android:inputType="textMultiLine"-->
+        <!--                android:scrollbars="vertical" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="324dp"
+            android:layout_height="296dp"
             android:layout_marginTop="75dp"
-            android:focusable="false"
-            android:hint="Tell me about yourself"
-            app:boxBackgroundColor="#5e5e76"
+            android:orientation="vertical"
+            android:background="@drawable/edit_text_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editDescriptionView">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/editTextDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="12dp"
-                android:background="@null"
+                android:ems="10"
+                android:gravity="start"
+                android:hint="@string/descriptionHint"
+                android:background="@android:color/transparent"
                 android:inputType="textMultiLine"
-                android:scrollbars="vertical" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--        <EditText-->
-        <!--            android:id="@+id/editTextDescription"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="75dp"-->
-        <!--            android:ems="10"-->
-        <!--            android:gravity="start"-->
-        <!--            android:inputType="textMultiLine"-->
-        <!--            android:text="Bio"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.5"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/editDescriptionView" />-->
-
+                android:scrollbars="vertical"
+                android:text="@string/descriptionHint" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/button"
@@ -69,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionView" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

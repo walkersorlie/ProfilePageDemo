@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -26,9 +27,9 @@ import com.google.android.material.textfield.TextInputLayout;
  */
 public class EditDescriptionFragment extends Fragment {
 
-    private TextInputEditText editDescription;
+    private EditText editDescription;
     private FragmentViewModel viewModel;
-    private TextInputLayout layout;
+//    private TextInputLayout layout;
 
     public EditDescriptionFragment() {
         // Required empty public constructor
@@ -49,8 +50,8 @@ public class EditDescriptionFragment extends Fragment {
         Button button = view.findViewById(R.id.button);
         editDescription = view.findViewById(R.id.editTextDescription);
 
-        layout = view.findViewById(R.id.descriptionView);
-        layout.setHintEnabled(false);
+//        layout = view.findViewById(R.id.descriptionView);
+//        layout.setHintEnabled(false);
 //        editDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //             @Override
 //             public void onFocusChange(View v, boolean hasFocus) {

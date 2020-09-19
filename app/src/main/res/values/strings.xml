@@ -2,4 +2,14 @@
     <string name="app_name">Profile Page</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="nameHint">e.g. Jimmy Johnson</string>
+    <string name="phoneHint">e.g. (999)999&#8211;9999</string>
+    <string name="emailHint">e.g. you@you.com</string>
+    <string name="descriptionHint">Tell me what you like&#8230;</string>
+
+    <string name="nameDescriptionView">Name</string>
+    <string name="phoneDescriptionView">Phone</string>
+    <string name="emailDescriptionView">Email</string>
+    <string name="descriptionDescriptionView">Description</string>
 </resources>
