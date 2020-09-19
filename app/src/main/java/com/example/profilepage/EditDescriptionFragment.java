@@ -50,18 +50,6 @@ public class EditDescriptionFragment extends Fragment {
         Button button = view.findViewById(R.id.button);
         editDescription = view.findViewById(R.id.editTextDescription);
 
-//        layout = view.findViewById(R.id.descriptionView);
-//        layout.setHintEnabled(false);
-//        editDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//             @Override
-//             public void onFocusChange(View v, boolean hasFocus) {
-//                 if (hasFocus) {
-//                     System.out.println("here");
-//                     layout.setHintEnabled(false);
-//                 }
-//             }
-//        });
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

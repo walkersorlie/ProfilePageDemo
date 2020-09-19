@@ -3,17 +3,14 @@ package com.example.profilepage;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -65,20 +62,9 @@ public class EditNameFragment extends Fragment {
                 viewModel.setName(editName.getText().toString());
 
                 navController.navigate(R.id.action_editNameFragment_to_homeFragment);
-//                navController.navigateUp();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
-
-//        MenuItem back = view.findViewById(android.R.id.home);
-//
-//        back.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                viewModel.setName(editName.getText().toString());
-//                return true;
-//            }
-//        });
 
         return view;
     }
