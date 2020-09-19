@@ -42,8 +42,8 @@ public class EditPhoneFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_phone, container, false);
 
-        Button button = (Button) view.findViewById(R.id.button);
-        editPhone = (EditText) view.findViewById(R.id.editTextPhone);
+        Button button = view.findViewById(R.id.button);
+        editPhone = view.findViewById(R.id.editTextPhone);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class EditPhoneFragment extends Fragment {
                 navController.navigate(R.id.action_editPhoneFragment_to_homeFragment);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
 
         return view;
     }

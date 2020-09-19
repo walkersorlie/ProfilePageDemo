@@ -16,9 +16,6 @@
             android:id="@+id/action_homeFragment_to_editPhoneFragment"
             app:destination="@id/editPhoneFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_editImageFragment"
-            app:destination="@id/editImageFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_editEmailFragment"
             app:destination="@id/editEmailFragment" />
         <action
@@ -41,15 +38,6 @@
         tools:layout="@layout/fragment_edit_phone" >
         <action
             android:id="@+id/action_editPhoneFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editImageFragment"
-        android:name="com.example.profilepage.EditImageFragment"
-        android:label="Edit Image"
-        tools:layout="@layout/fragment_edit_image" >
-        <action
-            android:id="@+id/action_editImageFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment

@@ -62,7 +62,7 @@ public class EditEmailFragment extends Fragment {
                 navController.navigate(R.id.action_editEmailFragment_to_homeFragment);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
 
         return view;
     }
