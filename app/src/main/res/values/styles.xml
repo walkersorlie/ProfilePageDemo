@@ -8,6 +8,8 @@
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textSize">20sp</item>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/Widget.MyApp.MyButton</item>
     </style>
 
     <!-- ToolBar -->
@@ -18,12 +20,41 @@
     </style>
 
     <style name="CircularImageViewStyle" parent="AppTheme">
-        <item name="civ_circle_color">@color/colorPrimary</item>
+        <item name="civ_circle_color">@color/colorSecondary</item>
         <item name="civ_border_width">3dp</item>
-        <item name="civ_border_color">@color/colorPrimary</item>
+        <item name="civ_border_color">@color/colorSecondary</item>
 <!--        <item name="civ_shadow">true</item>-->
 <!--        <item name="civ_shadow_color">@color/colorSecondary</item>-->
 <!--        <item name="civ_shadow_radius">4dp</item>-->
+    </style>
+
+    <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>
+<!--        <item name="boxBackgroundColor">@color/colorPrimary</item>-->
+        <item name="boxBackgroundMode">outline</item>
+        <item name="android:textColorHint">@color/colorOnPrimary</item>
+        <item name="hintTextColor">@color/colorOnPrimary</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.TextInputLayout.Rounded</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="boxBackgroundColor">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorOnPrimary</item>
+        <item name="editTextStyle">@style/TextInputEditText</item>
+        <item name="hintAnimationEnabled">false</item>
+    </style>
+
+    <style name="TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="Widget.MyApp.MyButton" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.TextInputLayout.Rounded</item>
     </style>
 
 </resources>

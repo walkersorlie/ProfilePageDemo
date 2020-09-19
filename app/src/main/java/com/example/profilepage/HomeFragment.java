@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -37,6 +38,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentViewModel viewModel;
     private ImageView imageView;
+    private FloatingActionButton fab;
     private TextInputEditText editNameTextView;
     private TextInputEditText editPhoneView;
     private TextInputEditText editEmailView;
@@ -61,6 +63,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         imageView = view.findViewById(R.id.imageView);
+        fab = view.findViewById(R.id.floatingIcon);
         editNameTextView = view.findViewById(R.id.editNameTextView);
         editPhoneView = view.findViewById(R.id.editPhoneView);
         editEmailView = view.findViewById(R.id.editEmailView);
@@ -84,6 +87,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
 //                viewModel.setImage(imageView.getDrawable());
 //                navController.navigate(R.id.action_homeFragment_to_editImageFragment);
+                startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI), GET_FROM_GALLERY);
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI), GET_FROM_GALLERY);
             }
         });
@@ -154,29 +164,60 @@ public class HomeFragment extends Fragment {
         viewModel.getName().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                editNameTextView.setText(s);
-//                editTextTextPersonName.setText(s);
-            }
-        });
-
-        viewModel.getEmail().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                editEmailView.setText(s);
+                TextInputLayout layout = requireView().findViewById(R.id.nameTextView);
+                if (s.trim().isEmpty()) {
+                    layout.setHintEnabled(true);
+                    layout.setHint(layout.getHint());
+                }
+                else {
+                    layout.setHintEnabled(false);
+                    editNameTextView.setText(s);
+                }
             }
         });
 
         viewModel.getPhone().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                editPhoneView.setText(s);
+                TextInputLayout layout = requireView().findViewById(R.id.phoneView);
+                if (s.trim().isEmpty()) {
+                    layout.setHintEnabled(true);
+                    layout.setHint(layout.getHint());
+                }
+                else {
+                    layout.setHintEnabled(false);
+                    editPhoneView.setText(s);
+                }
+            }
+        });
+
+        viewModel.getEmail().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                TextInputLayout layout = requireView().findViewById(R.id.emailView);
+                if (s.trim().isEmpty()) {
+                    layout.setHintEnabled(true);
+                    layout.setHint(layout.getHint());
+                }
+                else {
+                    layout.setHintEnabled(false);
+                    editEmailView.setText(s);
+                }
             }
         });
 
         viewModel.getDescription().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                editDescriptionView.setText(s);
+                TextInputLayout layout = requireView().findViewById(R.id.descriptionView);
+                if (s.trim().isEmpty()) {
+                    layout.setHintEnabled(true);
+                    layout.setHint(layout.getHint());
+                }
+                else {
+                    layout.setHintEnabled(false);
+                    editDescriptionView.setText(s);
+                }
             }
         });
     }

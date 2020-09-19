@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link EditDescriptionFragment#newInstance} factory method to
@@ -23,8 +26,9 @@ import android.widget.EditText;
  */
 public class EditDescriptionFragment extends Fragment {
 
-    private EditText editDescription;
+    private TextInputEditText editDescription;
     private FragmentViewModel viewModel;
+    private TextInputLayout layout;
 
     public EditDescriptionFragment() {
         // Required empty public constructor
@@ -42,8 +46,21 @@ public class EditDescriptionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_description, container, false);
 
-        Button button = (Button) view.findViewById(R.id.button);
-        editDescription = (EditText) view.findViewById(R.id.editTextDescription);
+        Button button = view.findViewById(R.id.button);
+        editDescription = view.findViewById(R.id.editTextDescription);
+
+        layout = view.findViewById(R.id.descriptionView);
+        layout.setHintEnabled(false);
+//        editDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//             @Override
+//             public void onFocusChange(View v, boolean hasFocus) {
+//                 if (hasFocus) {
+//                     System.out.println("here");
+//                     layout.setHintEnabled(false);
+//                 }
+//             }
+//        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +80,7 @@ public class EditDescriptionFragment extends Fragment {
                 navController.navigate(R.id.action_editDescriptionFragment_to_homeFragment);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
 
         return view;
     }
